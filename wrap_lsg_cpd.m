@@ -17,7 +17,13 @@ pc_target = pcread(target_ply);
 
 config = load("data/wrap/config.mat");
 config.outlierRatio = double(config.outlierRatio);
-
+config.maxIter = double(config.maxIter);
+config.tolerance = double(config.tolerance);
+config.truncationThreshold = double(config.truncationThreshold);
+config.optimizationIter = double(config.optimizationIter);
+config.optimizationTolerance = double(config.optimizationTolerance);
+config.neighbours = double(config.neighbours);
+config.maxPlaneRatio = double(config.maxPlaneRatio);
 
 tic
 xform = LSGCPD(pc_source, pc_target, 'outlierRatio', config.outlierRatio, 'maxIter', config.maxIter, 'tolerance', config.tolerance, 'truncationThreshold', config.truncationThreshold, 'optimizationIter', config.optimizationIter, 'optimizationTolerance', config.optimizationTolerance, 'neighbours', config.neighbours, 'maxPlaneRatio', config.maxPlaneRatio);
