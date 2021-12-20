@@ -18,8 +18,9 @@ pc_target = pcread(target_ply);
 config = load("data/wrap/config.mat");
 config.outlierRatio = double(config.outlierRatio);
 
+
 tic
-xform = LSGCPD(pc_source, pc_target, 'outlierRatio', config.outlierRatio);
+xform = LSGCPD(pc_source, pc_target, 'outlierRatio', config.outlierRatio, 'maxIter', config.maxIter, 'tolerance', config.tolerance, 'truncationThreshold', config.truncationThreshold, 'optimizationIter', config.optimizationIter, 'optimizationTolerance', config.optimizationTolerance, 'neighbours', config.neighbours, 'maxPlaneRatio', config.maxPlaneRatio);
 time = toc;
 
 % --------------- Visualization ---------------
