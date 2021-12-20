@@ -7,6 +7,8 @@ clc
 clear
 close all
 
+addpath('utility_functions')
+
 % --------------- Load Data ---------------
 source_ply = "data/wrap/source.ply";
 target_ply = "data/wrap/target.ply";
@@ -30,7 +32,6 @@ time = toc;
 
 output_matrix = zeros(4,4);
 
-if (out.inls>0)
     for i=1:3
         for j=1:3
             output_matrix(i,j)=xform.Rotation(i,j);
@@ -38,9 +39,8 @@ if (out.inls>0)
         output_matrix(i,4) = xform.Translation(i);
     end
     output_matrix(4,4)=1.0;
-end
 
 file_id=fopen("./data/wrap/output.txt", 'w');
-fprintf(file_id,"%d\n", time);
+fprintf(file_id,"%.2f\n", time);
 fclose(file_id);
 writematrix(output_matrix, "./data/wrap/output.txt",'Delimiter','tab', 'WriteMode', 'append');
